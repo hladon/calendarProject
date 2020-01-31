@@ -14,11 +14,6 @@ public class EventExceptionHandler {
         return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(DaoException.class)
-    public ResponseEntity<String> daoExceptions(DaoException e) {
-        return new ResponseEntity<String>("Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
     @ExceptionHandler(TypeMismatchException.class)
     public ResponseEntity<String> daoExceptions(TypeMismatchException e) {
         return new ResponseEntity<String>("Wrong input", HttpStatus.BAD_REQUEST);
