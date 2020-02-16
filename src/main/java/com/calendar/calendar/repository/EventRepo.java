@@ -1,11 +1,14 @@
 package com.calendar.calendar.repository;
 
+import com.calendar.calendar.exceptions.NoSuchEntity;
 import com.calendar.calendar.models.Event;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.TemporalType;
 import java.util.Date;
 import java.util.List;
 
+@Transactional
 @org.springframework.stereotype.Repository
 public class EventRepo extends Repository<Event> {
 
@@ -19,8 +22,10 @@ public class EventRepo extends Repository<Event> {
     }
 
     public void deleteById(long id) throws Exception {
-        entityManager.createQuery(DELETE_BY_ID)
+        int resInt=entityManager.createQuery(DELETE_BY_ID)
                 .setParameter(1, id).executeUpdate();
+        if (resInt==-1)
+            throw new NoSuchEntity();
     }
 
     public List<Event> getAll() throws Exception {

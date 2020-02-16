@@ -16,6 +16,11 @@ public class EventExceptionHandler {
 
     @ExceptionHandler(TypeMismatchException.class)
     public ResponseEntity<String> daoExceptions(TypeMismatchException e) {
-        return new ResponseEntity<String>("Wrong input", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<String>( HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(NoSuchEntity.class)
+    public ResponseEntity<String> noSuchEntity (NoSuchEntity e) {
+        return new ResponseEntity<String>( HttpStatus.NOT_FOUND);
     }
 }
