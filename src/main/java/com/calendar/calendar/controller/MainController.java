@@ -19,8 +19,7 @@ public class MainController {
     EventService service;
 
     @RequestMapping(path = "save",
-            method = RequestMethod.POST,
-            consumes = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.POST)
     public ResponseEntity<String> saveEvent(@RequestBody Event event) throws Exception {
         service.save(event);
         return new ResponseEntity<String>(HttpStatus.OK);
@@ -36,8 +35,7 @@ public class MainController {
     }
 
     @RequestMapping(path = "put",
-            method = RequestMethod.PUT,
-            consumes = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.PUT)
     public ResponseEntity<String> updateEvent(@RequestBody Event event) throws Exception {
         service.update(event);
         return new ResponseEntity<String>(HttpStatus.OK);
@@ -45,8 +43,7 @@ public class MainController {
 
     @RequestMapping(
             path = "getAll",
-            method = RequestMethod.GET
-    )
+            method = RequestMethod.GET)
     public ResponseEntity<List<Event>> getAll() throws Exception {
         return new ResponseEntity<List<Event>>(service.getAll(), HttpStatus.OK);
 
